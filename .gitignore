@@ -1,0 +1,11 @@
+/.DS_STORE
+/.idea
+/.vscode
+/node_modules
+/dist
+/build
+/styleguide
+.module-cache
+*.log*
+/tests/unit/coverage
+/public

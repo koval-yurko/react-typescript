@@ -1,0 +1,123 @@
+$alternate-color: #eee;
+$alternate-color-dark: #ccc;
+
+.demo-input,
+.demo-textarea {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.test-cell {
+    padding-top: 20px;
+}
+.test-cell-width {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.test-cell-height {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sisense-pivot--alternating-rows {
+    .table-grid--bottom.table-grid--left {
+        .table-grid__cell--level-last {
+            &.table-grid__cell--sibling-odd {
+                &:not(.table-grid__cell--user-type-subTotal) {
+                    &:not(.table-grid__cell--user-type-grandTotal) {
+                        background: $alternate-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .table-grid--bottom.table-grid--right {
+        .table-grid__cell--row-level-last {
+            &.table-grid__cell--row-sibling-odd {
+                &:not(.table-grid__cell--row-user-type-subTotal) {
+                    &:not(.table-grid__cell--row-user-type-grandTotal) {
+                        background: $alternate-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sisense-pivot--alternating-columns {
+
+    .table-grid--bottom.table-grid--left,
+    .table-grid--bottom.table-grid--right {
+        .table-grid__column:nth-child(even) {
+            background: $alternate-color;
+        }
+    }
+}
+
+.sisense-pivot--columns-headers {
+
+    .table-grid--top.table-grid--left,
+    .table-grid--top.table-grid--right {
+
+        .table-grid__cell {
+            background: $alternate-color;
+        }
+    }
+}
+
+.sisense-pivot--row-members {
+
+    .table-grid--bottom.table-grid--left {
+
+        .table-grid__cell {
+            &:not(.table-grid__cell--user-type-subTotal) {
+                &:not(.table-grid__cell--user-type-grandTotal) {
+                    background: $alternate-color;
+                }
+            }
+        }
+    }
+}
+
+.sisense-pivot--subtotals {
+
+    .table-grid--bottom.table-grid--left {
+
+        .table-grid__cell--user-type-subTotal,
+        .table-grid__cell--user-type-grandTotal {
+            background: $alternate-color;
+        }
+    }
+
+    .table-grid--bottom.table-grid--right {
+
+        .table-grid__cell--row-user-type-subTotal,
+        .table-grid__cell--row-user-type-grandTotal,
+        .table-grid__cell--col-user-type-subTotal,
+        .table-grid__cell--col-user-type-grandTotal {
+            background: $alternate-color;
+        }
+
+        .table-grid__cell--row-user-type-subTotal.table-grid__cell--col-user-type-subTotal,
+        .table-grid__cell--row-user-type-subTotal.table-grid__cell--col-user-type-grandTotal,
+        .table-grid__cell--row-user-type-grandTotal.table-grid__cell--col-user-type-subTotal,
+        .table-grid__cell--row-user-type-grandTotal.table-grid__cell--col-user-type-grandTotal {
+            background: $alternate-color-dark;
+        }
+    }
+}
+
+.pagination-panel-demo {
+
+    .sisense-pivot__pagination-panel {
+        opacity: 1;
+    }
+}
+
+.pivot-json-editor {
+    height: 400px;
+    margin-bottom: 5px;
+}

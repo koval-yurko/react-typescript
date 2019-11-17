@@ -1,0 +1,7 @@
+_old/*
+node_modules/*
+flow-typed/*
+dist/*
+styleguide/*
+tests/unit/coverage/*
+public/*
