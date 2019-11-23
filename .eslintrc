@@ -2,17 +2,20 @@
 extends: [
   "airbnb",
   "plugin:import/errors",
-  "plugin:jsx-a11y/recommended",
-  "plugin:flowtype/recommended"
+  "plugin:@typescript-eslint/eslint-recommended",
+  "plugin:@typescript-eslint/recommended",
+  "plugin:@typescript-eslint/recommended-requiring-type-checking"
 ]
-plugins: ["react", "import", "jsx", "jsdoc", "flowtype"]
+plugins: ["import", "jsdoc", "@typescript-eslint/eslint-plugin"]
 env:
   node: true
   browser: true
   es6: true
   mocha: true
-parser: "babel-eslint"
+parser: "@typescript-eslint/parser"
 parserOptions:
+  project: "./tsconfig.json"
+  jsx: true
   sourceType: module
   ecmaVersion: 7
   ecmaFeatures:

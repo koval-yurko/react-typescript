@@ -7,7 +7,7 @@ module.exports = {
             name: 'Components',
             components: [
                 './src/components/Demo/Demo.tsx',
-                './src/components/MouseWheelCatcher/MouseWheelCatcher.jsx'
+                './src/components/MouseWheelCatcher/MouseWheelCatcher.tsx'
             ],
         }
     ],

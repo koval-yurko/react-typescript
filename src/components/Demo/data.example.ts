@@ -1,12 +1,8 @@
-/* eslint-disable comma-dangle, react/no-array-index-key, react/jsx-filename-extension */
+/* eslint-disable comma-dangle */
 
-import { getText } from './Demo';
+export { getText } from './Demo';
 
-export function generateData(
-    rowsCount: number = 1,
-    cellsCount: number = 1,
-    startRowIndex: number = 0
-) {
+export function generateData(rowsCount = 1, cellsCount = 1, startRowIndex = 0) {
     return Array.from(Array(rowsCount)).map((r, rowIndex) => (
         Array.from(Array(cellsCount)).map((c, cellIndex) => (
             {
@@ -16,19 +12,18 @@ export function generateData(
     ));
 }
 
-export function generateUniqueKey(min: number = 100, max: number = 1000): number {
+export function generateUniqueKey(min = 100, max = 1000): number {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-export function mergeData(
-    firstArray: Array<any> | undefined = [],
-    secondArray: Array<any> | undefined = []
-): Array<any> {
+export function mergeData(firstArray?: Array<any>, secondArray?: Array<any>): Array<any> {
     if (!firstArray && !secondArray) {
         return [];
-    } else if (!firstArray && secondArray) {
+    }
+    if (!firstArray && secondArray) {
         return secondArray;
-    } else if (firstArray && !secondArray) {
+    }
+    if (firstArray && !secondArray) {
         return firstArray;
     }
     return (firstArray || []).concat(secondArray || []);
@@ -574,7 +569,6 @@ export const defaultCustomData = {
 export default {
     generateData,
     generateUniqueKey,
-    getText,
     mergeData,
     defaultQuery,
     defaultCustomData,

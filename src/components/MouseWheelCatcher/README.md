@@ -1,7 +1,7 @@
 Default scroll
 ```js
-const MouseWheelCatcher = require('./index').MouseWheelCatcher;
-const example = require('../Demo/data.example.js');
+import { Demo } from '../Demo';
+import { getText } from '../Demo/data.example.ts';
 
 <Demo
     inputsCount={0}
@@ -9,7 +9,7 @@ const example = require('../Demo/data.example.js');
     input-0-descr="Rows"
 >{
     ({ inputs }) => {
-        const data = example.getText(50);
+        const data = getText(50);
         const style = {
             display: 'inline-block',
             width: 450,

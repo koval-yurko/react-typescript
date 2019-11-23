@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 type Props = {
-    measure: Function,
-    styleObj: { width?: number, height?: number, },
-    data: string,
-    rowIndex: number,
-    columnIndex: number,
+    measure: Function;
+    styleObj: { width?: number; height?: number; };
+    data: string;
+    rowIndex: number;
+    columnIndex: number;
 };
 
 type State = {
-    w: string,
-    h: number,
+    w: string;
+    h: number;
 };
 
 export class TestCell extends React.PureComponent<Props, State> {

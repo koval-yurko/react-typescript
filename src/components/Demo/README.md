@@ -1,9 +1,9 @@
 Demo example
 ```js
-require('jsoneditor/dist/jsoneditor.css');
-require('./styles.scss');
-const JsonEditor = require('./JsonEditor.tsx').JsonEditor;
-const TestCell = require('./TestCell.tsx').TestCell;
+import 'jsoneditor/dist/jsoneditor.css';
+import './styles.scss';
+import { JsonEditor } from './JsonEditor.tsx';
+import { TestCell } from './TestCell.tsx';
 
 <Demo
     inputsCount={3}

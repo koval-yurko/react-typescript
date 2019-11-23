@@ -2,16 +2,15 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const rootPath = __dirname;
 const srcPath = path.resolve(rootPath, './src');
 const destPath = path.resolve(rootPath, './dist');
 
-const extractCSS = new ExtractTextPlugin({
+const extractCSS = new MiniCssExtractPlugin({
     filename: './[name].css',
-    allChunks: true,
     ignoreOrder: true,
 });
 
@@ -22,6 +21,10 @@ function getStylesLoaders(isScss, isTest) {
         list.push({
             loader: 'style-loader',
         });
+    } else {
+        list.push({
+            loader: MiniCssExtractPlugin.loader
+        })
     }
 
     const cssLoader = {
@@ -59,14 +62,7 @@ function getStylesLoaders(isScss, isTest) {
                 sourceMap: true,
             },
         });
-        list[(isTest ? 1 : 0)].options.importLoaders = 3;
-    }
-
-    if (!isTest) {
-        return extractCSS.extract({
-            fallback: 'style-loader',
-            use: list,
-        });
+        list[1].options.importLoaders = 3;
     }
 
     return list;
@@ -81,6 +77,7 @@ module.exports = (env, args) => {
     const addSourceMap = (args && args.addSourceMap) || true;
 
     const config = {
+        mode: isProd ? 'production' : 'development',
         devtool: 'source-map',
         context: rootPath,
         entry: {
@@ -100,11 +97,6 @@ module.exports = (env, args) => {
                     loader: 'file-loader',
                 },
                 {
-                    test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
-                    use: 'babel-loader',
-                },
-                {
                     test: /\.ts(x?)$/,
                     exclude: /node_modules/,
                     use: 'ts-loader',
@@ -120,7 +112,7 @@ module.exports = (env, args) => {
             ],
         },
         resolve: {
-            extensions: ['.js', '.jsx', 'es6', 'ts', 'tsx'],
+            extensions: ['.js', '.jsx', '.es6', '.ts', '.tsx'],
         },
         plugins: [
             new webpack.DefinePlugin({
