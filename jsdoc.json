@@ -1,0 +1,58 @@
+{
+  "tags": {
+    "allowUnknownTags": ["category"]
+  },
+  "source": {
+    "include": ["./src"],
+    "includePattern": ".+\\.ts(x)?$",
+    "no-excludePattern": "(components)"
+  },
+  "plugins": [
+    "better-docs/category",
+    "jsdoc-plugin-typescript",
+    "node_modules/better-docs/typescript"
+  ],
+  "typescript": {
+    "moduleRoot": "./"
+  },
+  "opts": {
+    "encoding": "utf8",
+    "destination": "dist-docs",
+    "readme": "./docs/README.md",
+    "recurse": true,
+    "tutorials": "./docs/tutorials",
+    "no-template": "node_modules/better-docs",
+    "template": "node_modules/tui-jsdoc-template"
+  },
+  "templates": {
+    "name": "Pivot2",
+    "logo": {
+      "url": "images/icon.png",
+      "width": "40px",
+      "height": "40px"
+    },
+    "default": {
+      "staticFiles": {
+        "include": ["./docs/statics", "./docs/tutorials"]
+      }
+    },
+    "tabNames": {
+      "api": "API",
+      "tutorials": "Tutorials"
+    },
+    "navigation": [
+      {
+        "label": "Gitlub",
+        "href": "https://gitlab.sisense.com/SisenseTeam/Product/FE/pivot2-be"
+      },
+      {
+        "label": "Demo",
+        "href": "http://sisenseteam.gitlab-pages.sisense.com/Product/FE/pivot2/"
+      }
+    ],
+    "footerText": "<span>Copyright © 2019 Sisense Inc. All rights reserved.</span><script src=\"main.js\"></script>",
+    "css": ["main.css"],
+    "cleverLinks": false,
+    "monospaceLinks": false
+  }
+}

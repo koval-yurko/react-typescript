@@ -3,6 +3,7 @@
 /.vscode
 /node_modules
 /dist
+/dist-docs
 /build
 /styleguide
 .module-cache

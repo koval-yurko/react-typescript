@@ -15,6 +15,7 @@ env:
 parser: "@typescript-eslint/parser"
 parserOptions:
   project: "./tsconfig.json"
+  tsconfigRootDir: "./"
   jsx: true
   sourceType: module
   ecmaVersion: 7
@@ -84,6 +85,9 @@ rules:
   jsdoc/require-param-description: "error"
   jsdoc/require-param-type: "error"
   jsdoc/require-returns-type: "error"
+  "@typescript-eslint/member-delimiter-style": ["warn", {
+    delimiter: "comma"
+  }]
 globals:
   expect: true
   sinon: true

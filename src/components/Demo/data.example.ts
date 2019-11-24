@@ -12,7 +12,7 @@ export function generateData(rowsCount = 1, cellsCount = 1, startRowIndex = 0) {
     ));
 }
 
-export function generateUniqueKey(min = 100, max = 1000): number {
+function generateUniqueKey(min: number = 100, max: number = 1000): number {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
