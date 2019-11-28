@@ -1,0 +1,108 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "plugins": ["import", "jsdoc", "@typescript-eslint/eslint-plugin"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "mocha": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./",
+    "jsx": true,
+    "sourceType": "module",
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "classes": true,
+      "jsx": true
+    }
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "indent": ["error", 4, {"SwitchCase": 1}],
+    "max-len": ["error", { "code": 100 }],
+    "comma-dangle": ["error", {
+      "arrays": "never",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }],
+    "no-console": "error",
+    "no-unused-vars": ["error", {"vars": "local"}],
+    "no-param-reassign": ["error", { "props": false }],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-no-undef": "warn",
+    "react/jsx-sort-props": 0,
+    "react/sort-prop-types": 0,
+    "react/no-did-mount-set-state": "warn",
+    "react/no-did-update-set-state": "warn",
+    "react/no-multi-comp": "warn",
+    "react/no-unknown-property": "warn",
+    "react/prop-types": "warn",
+    "react/require-default-props": "warn",
+    "react/sort-comp": [
+      "error",
+      {
+        "order": [
+          "instance-variables",
+          "type-annotations",
+          "instance-variables",
+          "type-annotations",
+          "static-properties",
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "instance-methods",
+          "rendering"
+        ],
+        "groups": {
+          "rendering": [
+            "/^render.+$/",
+            "render"
+          ]
+        }
+      }
+    ],
+    "react/static-property-placement": ["error", "static public field"],
+    "react/state-in-constructor": ["error", "always"],
+    "react/destructuring-assignment": 0,
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": ["error", { "ts": "never", "tsx": "never" }],
+    "require-jsdoc": "warn",
+    "valid-jsdoc": "error",
+    "jsdoc/check-param-names": "error",
+    "jsdoc/check-tag-names": "error",
+    "jsdoc/check-types": "error",
+    "jsdoc/newline-after-description": "error",
+    "jsdoc/require-hyphen-before-param-description": "error",
+    "jsdoc/require-param": "error",
+    "jsdoc/require-param-description": "error",
+    "jsdoc/require-param-type": "error",
+    "jsdoc/require-returns-type": "error",
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": { "delimiter": "comma", "requireLast": true },
+        "singleline": { "delimiter": "comma", "requireLast": false }
+      }
+    ],
+    "@typescript-eslint/no-inferrable-types": ["warn"]
+  },
+  "globals": {
+    "expect": true,
+    "sinon": true,
+    "Promise": true
+  }
+}

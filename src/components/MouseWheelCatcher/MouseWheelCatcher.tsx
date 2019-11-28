@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 
 type Props = {
-    children: React.ReactNode;
-    onMouseScroll: Function | undefined;
-    activated: boolean | undefined;
+    children: React.ReactNode,
+    onMouseScroll: Function | undefined,
+    activated: boolean | undefined,
 }
 
 export class MouseWheelCatcher extends React.PureComponent<Props> {

@@ -2,12 +2,13 @@ import * as React from 'react';
 import JSONEditor, { JSONEditorOptions } from 'jsoneditor';
 
 type Props = {
-    json: Object,
+    json: Record<string, any>,
     onChange: Function,
 };
 
 export class JsonEditor extends React.PureComponent<Props> {
     jsoneditor: JSONEditor | undefined;
+
     container: HTMLElement | undefined;
 
     static defaultProps = {

@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 type Props = {
-    measure: Function;
-    styleObj: { width?: number; height?: number; };
-    data: string;
-    rowIndex: number;
-    columnIndex: number;
+    measure: Function,
+    styleObj: { width?: number, height?: number },
+    data: string,
+    rowIndex: number,
+    columnIndex: number,
 };
 
 type State = {
-    w: string;
-    h: number;
+    w: string,
+    h: number,
 };
 
 export class TestCell extends React.PureComponent<Props, State> {
@@ -40,28 +40,32 @@ export class TestCell extends React.PureComponent<Props, State> {
     };
 
     onPlusW = () => {
-        const newW = `${this.state.w}a`;
+        const { w } = this.state;
+        const newW = `${w}a`;
         this.setState({
             w: newW,
         }, this.notifyUpdate);
     };
 
     onMinusW = () => {
-        const newW = this.state.w.slice(0, -1);
+        const { w } = this.state;
+        const newW = w.slice(0, -1);
         this.setState({
             w: newW,
         }, this.notifyUpdate);
     };
 
     onPlusH = () => {
-        const newH = this.state.h + 1;
+        const { h } = this.state;
+        const newH = h + 1;
         this.setState({
             h: newH,
         }, this.notifyUpdate);
     };
 
     onMinusH = () => {
-        const newH = Math.max(0, this.state.h - 1);
+        const { h } = this.state;
+        const newH = Math.max(0, h - 1);
         this.setState({
             h: newH,
         }, this.notifyUpdate);
@@ -73,8 +77,6 @@ export class TestCell extends React.PureComponent<Props, State> {
             rowIndex,
             columnIndex,
             styleObj,
-            measure, // eslint-disable-line no-unused-vars
-            ...props
         } = this.props;
         const { w, h } = this.state;
 
@@ -82,17 +84,18 @@ export class TestCell extends React.PureComponent<Props, State> {
         if (rowIndex === columnIndex) {
             buttons = (
                 <div>
-                    <button onClick={this.onPlusW}>W +</button>
-                    <button onClick={this.onMinusW}>W -</button>
-                    <button onClick={this.onPlusH}>H +</button>
-                    <button onClick={this.onMinusH}>H -</button>
+                    <button type="button" onClick={this.onPlusW}>W +</button>
+                    <button type="button" onClick={this.onMinusW}>W -</button>
+                    <button type="button" onClick={this.onPlusH}>H +</button>
+                    <button type="button" onClick={this.onMinusH}>H -</button>
                 </div>
             );
         }
 
         return (
-            <div className="test-cell" {...props}>
-                {w}{'-'}{data}
+            <div className="test-cell">
+                {`${w}-${data}`}
+                {/* eslint-disable-next-line react/no-array-index-key */}
                 {(Array.from(Array(h)).map((o, i) => (<br key={`br-${i}`} />)))}
                 {buttons}
                 <span className="test-cell-width">

@@ -16,8 +16,8 @@ type TextAreaDescr = {
 };
 
 type State = {
-    inputs: { [key: string]: InputDescr; },
-    textAreas: { [key: string]: TextAreaDescr; },
+    inputs: { [key: string]: InputDescr },
+    textAreas: { [key: string]: TextAreaDescr },
     child: React.ReactNode,
 };
 
@@ -31,7 +31,8 @@ type Props = {
 };
 
 export class Demo extends React.PureComponent<Props, State> {
-    inputStyle: Object;
+    inputStyle: Record<string, number>;
+
     textAreaStyle: { width: number, height: number };
 
     static defaultProps = {
@@ -44,7 +45,6 @@ export class Demo extends React.PureComponent<Props, State> {
         super(props);
         const {
             show,
-            children,
             inputsCount,
             textAreasCount,
         } = props;
@@ -52,7 +52,7 @@ export class Demo extends React.PureComponent<Props, State> {
         this.state = {
             inputs: {},
             textAreas: {},
-            child: show ? (typeof children === 'function') ? children(this.state) : children : null,
+            child: show ? this.getChildren() : null,
         };
 
         this.inputStyle = {
@@ -93,6 +93,11 @@ export class Demo extends React.PureComponent<Props, State> {
         });
     }
 
+    getChildren() {
+        const { children } = this.props;
+        return (typeof children === 'function') ? children(this.state) : children;
+    }
+
     /**
      * Set value for appropriate input
      *
@@ -102,6 +107,7 @@ export class Demo extends React.PureComponent<Props, State> {
      * @private
      */
     updateInput(index: number, value: string) {
+        const { inputs } = this.state;
         const propNameValue = `input-${index}-value`;
         let newValue = parseInt(value, 10);
         if (Number.isNaN(newValue)) {
@@ -109,13 +115,13 @@ export class Demo extends React.PureComponent<Props, State> {
         }
 
         const newInputObj = {
-            ...this.state.inputs[index],
+            ...inputs[index],
             value: newValue || 0,
         };
 
         this.setState({
             inputs: {
-                ...this.state.inputs,
+                ...inputs,
                 [index]: newInputObj,
             },
         });
@@ -130,14 +136,16 @@ export class Demo extends React.PureComponent<Props, State> {
      * @private
      */
     updateTextArea(index: number, value: string) {
+        const { textAreas } = this.state;
+
         const newTextAreaObj = {
-            ...this.state.textAreas[index],
+            ...textAreas[index],
             value,
         };
 
         this.setState({
             textAreas: {
-                ...this.state.textAreas,
+                ...textAreas,
                 [index]: newTextAreaObj,
             },
         });
@@ -145,9 +153,9 @@ export class Demo extends React.PureComponent<Props, State> {
 
     onCreateClick = () => {
         const { children } = this.props;
-
+        const { state } = this;
         this.setState({
-            child: (typeof children === 'function') ? children(this.state) : children,
+            child: (typeof children === 'function') ? children(state) : children,
         });
     };
 
@@ -178,8 +186,8 @@ export class Demo extends React.PureComponent<Props, State> {
         return (
             <div className={className}>
                 <div>
-                    <button onClick={this.onCreateClick}>Apply</button>
-                    <button onClick={this.onDestroyClick}>Destroy</button>
+                    <button type="button" onClick={this.onCreateClick}>Apply</button>
+                    <button type="button" onClick={this.onDestroyClick}>Destroy</button>
                 </div>
                 <div>
                     {Object.keys(inputs).map((el, index) => {
