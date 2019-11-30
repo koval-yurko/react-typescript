@@ -3,7 +3,7 @@ import JSONEditor, { JSONEditorOptions } from 'jsoneditor';
 
 type Props = {
     json: Record<string, any>,
-    onChange: Function,
+    onChange?: Function,
 };
 
 export class JsonEditor extends React.PureComponent<Props> {
@@ -50,7 +50,7 @@ export class JsonEditor extends React.PureComponent<Props> {
             console.warn('JsonEditor wrong JSON string');
         }
 
-        if (data) {
+        if (data && this.props.onChange) {
             this.props.onChange(data);
         }
     };
