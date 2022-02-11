@@ -64,7 +64,7 @@
     "jsdoc": "^3.6.3",
     "jsdoc-plugin-typescript": "^2.0.5",
     "jsoneditor": "^5.32.0",
-    "karma": "^2.0.2",
+    "karma": "^6.3.14",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
